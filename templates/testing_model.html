@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}Testing Model{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/test_mod.css')}}">
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+<script>
+    $(".btn").click(function(){
+        if($("input[type='number']").val()){
+            $("img").css("display","none");
+            $(".load").fadeIn();
+        }
+    });
+</script>
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <div class="container">
+        <div class="left bg-dark">
+            <div class="left-content">
+                <h2>IM-Analysis Model</h2>
+                <h3>Inputs</h3>
+                <p>MC = Number of times you want the algorithm to iterate.</p>
+                <p>k = Number of seed nodes</p>
+                <form action="" method="post">
+                    <span>For Comparision based on k vs Time:</span>
+                    <div>
+                        <label for="seed">No. of Seed Nodes</label>
+                        <input id="seed" type="number" placeholder="Value of K" name="seed" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="mc">MC Constant value</label>
+                        <input id="mc" type="number" placeholder="Value of MC" name="mc" required autocomplete="off">
+                    </div>
+                    <span>For Comparision based on size of network:</span>
+                    <div>
+                        <label for="graph">No. of Graphs</label>
+                        <input id="graph" type="number" placeholder="No of graphs" name="graph" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="node">Steps of Nodes</label>
+                        <input id="node" type="number" placeholder="No of nodes" name="node" required autocomplete="off">
+                    </div>
+                    ** the size of the first graph dataset is set to 100 nodes.
+                    <div>
+                        <input class="btn btn-outline-light btn-lg ps-5 pe-5 fw-bold edit-btn" type="submit" value = "Genetate Results">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+
+                <div class="load">
+                    <div class="lds-dual-ring"></div>
+                    <h2>Loading</h2>
+                </div>
+
+                <img src="{{url_for('static',filename='cache/test_plot_k.png')}}" alt="">
+            
+            
+                <img src="{{url_for('static',filename='cache/test_plot_size.png')}}" alt="">
+            
+        </div>
+    </div>
+{% endblock %}

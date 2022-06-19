@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}PROJECT{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/project.css')}}">
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+    <!-- Making Nav Link Active -->
+    <script>
+        document.getElementById('project').classList.add('active');
+        window.onresize = function(){
+            if($('button').css('display') == 'none')
+                $('.bm-img').css('display','flex');
+            else    
+            $('.bm-img').css('display','none');
+        }
+    </script>
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <div class="container-fluid my-div">
+        <!-- Business Model -->
+        <div class="container-fluid my-subDiv">
+            <!-- Description(Left) -->
+            <div class = "bm-desc">
+                <h2 class = "d-flex justify-content-center bm-head">Business Model</h2>
+                <p class = "d-flex justify-content-center">This model is based upon the individual's/company's business needs.</p> 
+                <p class = "d-flex justify-content-center">The function of this module is to take in a network of nodes</p> 
+                <p class = "d-flex justify-content-center">from the user and calculate the maximum influenced seed nodes in it.</p>
+                <a href = "{{url_for('business')}}" class="btn btn-outline-dark btn-lg ps-5 pe-5 mt-4 fw-bold">Launch</a>
+            </div>
+            <!-- Image(Right) -->
+            <div class="bm-img">
+                <img src="{{url_for('static',filename='images/business_model_img.jpeg')}}" alt="">
+            </div>
+        </div>
+        <!-- Testing Model -->
+        <div class="container-fluid my-subDiv bg" >
+            <!-- Description(Left) -->
+            <div class = "bm-desc">
+                <h2 class = "d-flex justify-content-center bm-head text-light">IM-Analysis Model</h2>
+                <p class = "d-flex justify-content-center text-light">This model is based upon comparative analysis.</p>
+                <p class = "d-flex justify-content-center text-light">This project has implemented three working algorithms :&nbsp;<span>Greedy</span>&nbsp;,&nbsp;<span>CELF</span>&nbsp;,&nbsp;<span>RIS</spank>&nbsp;.</p>
+                <p class = "d-flex justify-content-center text-light">The function of this module is to compare these three </p>
+                <p class = "d-flex justify-content-center text-light">modules based on performance and time and show the results.</p>
+                <a href = "{{url_for('test')}}" class="btn btn-outline-light btn-lg ps-5 pe-5 fw-bold edit-btn">Compare</a>
+            </div>
+            <!-- Image(Right) -->
+            <div class="bm-img">
+                <img src="{{url_for('static',filename='images/testing_model_img.jpeg')}}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

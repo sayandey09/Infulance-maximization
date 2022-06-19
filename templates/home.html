@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}HOME{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <video autoplay muted loop class="myVideo">
+        <source src="{{url_for('static',filename='/video/bg_maze.mp4')}}" type="video/mp4">
+    </video>
+    <h1 id="text" class="typewriter"></h1>
+    <p>Influence maximization is the problem of finding a small subset of nodes (seed nodes) in a social network that could maximize the spread of influence. This project lets you compare between different algorithms used to find the maximum influenced nodes.</p>
+    <!-- Button Div 'Let's Get Started' -->
+    <div class="container d-flex justify-content-center">
+        <a class="btn btn-outline-dark btn-lg ps-5 pe-5 mt-4 fw-bold" href="{{url_for('project')}}">Let's Get Started <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill mb-1" viewBox="0 0 16 16">
+            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg></a>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9 vid">
+        <video width="530" height="325" controls >
+            <source  src="{{url_for('static', filename='/video/demo.mp4')}}" type="video/mp4">
+        </video>
+      </div>
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+    <!-- Making Nav Link Active -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+    <script>
+        document.getElementById('home').classList.add('active');
+        const text = ["Welcome.","To.", "Influence\u00A0Maximization\u00A0Project."];
+        let str = text[0]+".";
+        let text_i =0;
+        let animationTime = 0;
+        function typewriter(i,animationTime){
+            let writer = document.getElementById("text");
+            if(str.length > i){
+                setTimeout(function(){
+                    writer.innerHTML += str.charAt(i);
+                    typewriter(++i,150);
+                },animationTime);
+            }
+            else if(str.length == i){
+                typewriter(0,0);
+                writer.innerHTML = "";
+                if(text_i == text.length-1)
+                    text_i = -1;
+                str = text[++text_i]+".";
+            }
+        }
+        typewriter(0,0);
+    </script>
+{% endblock %}

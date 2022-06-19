@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}ABOUT{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/about.css')}}">
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+    <!-- Making Nav Link Active -->
+    <script>
+        document.getElementById('about').classList.add('active');
+        function animate(algo,desc) {
+            if(algo.parent().find('.rectangle').css('width') == '150px'){
+                algo.parent().find('.rectangle').css('width', '300px');
+                algo.parent().find('span').css('margin-left', '75px');
+                algo.parent().parent().find('.desc'+desc).slideDown(1000);
+            }
+            else if(algo.parent().find('.rectangle').css('width') > '150px'){
+                algo.parent().find('.rectangle').css('width', '150px');
+                algo.parent().find('span').css('margin-left', '40px');
+                algo.parent().parent().find('.desc'+desc).slideUp(1000);
+            }
+        }
+        $('.greedy .circle').click(function(){animate($(this), '-greedy')});
+        $('.celf .circle').click(function(){animate($(this), '-celf')});
+        $('.ris .circle').click(function(){animate($(this), '-ris')});
+
+        window.onresize = function(){
+            if($('button').css('display') == 'none'){
+                $('.left').css('width','50%');
+                $('.right').css('width','50%');
+                $('.container').css('display','flex');
+                $('.container').css('overflow','auto');
+            }
+            else{
+                $('.left').css('width','100%');
+                $('.right').css('width','100%');
+                $('.container').css('display','block');
+                $('.container').css('overflow','unset');
+            }
+        }
+    </script>
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <div class="container">
+        <div class="left">
+            <div class="d-flex justify-content-center ppt">
+                <iframe src="https://onedrive.live.com/embed?cid=CF532F558B470ACA&amp;resid=CF532F558B470ACA%218593&amp;authkey=AG6Z5I-ah5-rmmQ&amp;em=2&amp;wdAr=1.7777777777777777&amp;wdEaaCheck=1" width="100%" height="475px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+            </div>
+            <div class="button d-flex justify-content-center">
+                <a class="btn btn-outline-light btn-lg ps-5 pe-5 mt-4 fw-bold" href="{{url_for('team')}}">Meet the Team <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill mb-1" viewBox="0 0 16 16">
+                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                  </svg></a>
+            </div>
+        </div>
+        <div class="right">
+            <div class="greedy">
+                <div class="circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </div>
+                <div class="rectangle"><span>Greedy</span></div>
+            </div>
+            <div class="desc-greedy">
+                <span>With our spread function IC() in hand, we can now turn to the IM algorithms themselves. <br>
+                We begin with the Greedy algorithm proposed in the seminal Kempe et al. (2003) paper.<br>
+                This basically finds the node with the biggest spread, adds it to the seed set and then finds the<br>
+                node with the next biggest marginal spread over and above the spread of the original and so<br>
+                on until k seed nodes are found.<br>
+                This algorithm only needs to calculate the spread of ∑ki=0(n−i)≈kn nodes, which is just<br>
+                5,000 in the case of our 1,000 node and k=5 network (a lot less that 8 trillion!). Of course,<br>
+                this computational improvement comes at the cost of the resulting seed set only being an<br>
+                approximate solution to the IM problem because it only considers the incremental spread of<br>
+                the k nodes individually rather than combined. Fortunately, however, the authors show that<br>
+                the algorithm is theoretically guaranteed to choose a seed set whose spread will be at least<br>
+                63% of the spread of the optimal seed set. No better theoretically proved approximation has<br>
+                been found (and in fact, most of the algorithms proposed in the literature don’t have any<br>
+                theoretical guarantees). The proof of the guarantee is in the paper, but it relies heavily on the<br>
+                “submodular” property of spread functions, which is a kind of set function analogue of<br>
+                concavity, and will be explained in more detail below when we look at the CELF algorithm.<br></span>
+            </div>
+            <div class="celf">
+                <div class="circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </div>
+                <div class="rectangle"><span>CELF</span></div>
+            </div>
+            <div class="desc-celf">
+                The CELF algorithm was developed by Leskovec et al. (2007) [20]. Although the <br>
+                Greedy algorithm is much quicker than solving the full problem, it is still very slow when<br>
+                used on realisticaly sized networks. CELF was one of the first significant subsequent<br>
+                improvements.<br>
+                CELF exploits the sub-modularity property of the spread function, which implies that the<br>
+                marginal spread of a given node in one iteration of the Greedy algorithm cannot be any larger<br>
+                than its marginal spread in the previous iteration. This helps us to choose the nodes for which<br>
+                we evaluate the spread function in a more sophisticated manner, rather than simply evaluating<br>
+                the spread for all nodes. More specifically, in the first round, we calculate the spread for all<br>
+                nodes (like Greedy) and store them in a list, which is then sorted. Naturally, the top node is<br>
+                added to the seed set in the first iteration, and then removed from the list. In the next iteration,<br>
+                only the spread for the top node is calculated. If, after resorting, that node remains at the top<br>
+                of the list, then it must have the highest marginal gain of all nodes. Why? Because we know<br>
+                that if we calculated the marginal gain for all other nodes, they’d be lower than the value<br>
+                currently in the list (due to submodularity) and therefore the “top node” would remain on top.<br>
+                This process continues, finding the node that remains on top after calculating its marginal<br>
+                spread, and then adding it to the seed set. By avoiding calculating the spread for many nodes,<br>
+                CELF turns out to be much faster than Greedy, which we’ll show below.<br>
+                The celf() function below, which implements the algorithm, is split into two components. The<br>
+                first component, like the Greedy algorithm, iterates over each node in the graph and selects<br>
+                the node with the highest spread into the seed set. However, it also stores the spreads of each<br>
+                node in the sorted list Q for use in the second component.<br>
+                The second component iterates to find the remaining k-1 seed nodes. Within each iteration,<br>
+                the algorithm evaluates the marginal spread of the top node in the list Q and replaces it within<br>
+                the list. If, after resorting, the top node stays in place (Q[0][0] == current) then that node is<br>
+                selected as the next seed node. If not, then the marginal spread of the new top node<br>
+                within Q is evaluated and so on.<br>
+                Like greedy(), the function returns the optimal seed set, the resulting spread and the time<br>
+                taken to compute each iteration. In addition, it also returns the list LOOKUPS, which keeps <br>
+            </div>
+            <div class="ris">
+                <div class="circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                </div>
+                <div class="rectangle"><span>RIS</span></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

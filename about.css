@@ -1,0 +1,95 @@
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    flex-grow: 1;
+    /* background-color: aqua; */
+    padding: 0;
+    margin: 0;
+    max-width: initial;
+    max-height: 100%;
+    display: flex;
+    overflow: auto;
+}
+.left{
+    height: 100%;
+    width: 50%;
+    /* background-color: bisque; */
+    background-image: url("/static/images/bg_image.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /* position: absolute; */
+    position: sticky;
+    top: 0;
+}
+.right{
+    width: 50%;
+    height: 50%;
+}
+.button{
+    margin-top: 80px;
+}
+.greedy, .celf, .ris{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+.circle{
+    height:70px;
+    width: 70px;
+    background-color: black;
+    margin: 10px;
+    border-radius: 100%;
+    border: 2px solid white;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+}
+.rectangle{
+    height: 55px;
+    width: 150px;
+    background-color: black;
+    margin: 10px;
+    left: -21%;
+    position: relative;
+    z-index: 1;
+    color: white;
+    transition-duration: 1s;
+    transition-property: width;
+    border-radius: 2em;
+}
+.rectangle > span{
+    margin-left: 40px;
+    margin-top: 7px;
+    position: absolute;
+    font-weight: bold;
+    font-size: x-large;
+    transition-duration: 1s;
+    transition-property: margin-left;
+}
+.circle > svg{
+    /* background-color: white; */
+    color: white;
+    width: 70px;
+    height: 40px;
+}
+.desc-greedy, .desc-celf{
+    margin-left: 30px;
+    background-color: black;
+    color: white;
+    padding: 0px 10px;
+    padding-right: 2px;
+    font-family: 'Comic Sans MS';
+    font-size:medium;
+    height: fit-content;
+    width:fit-content;
+    display: none;
+}
+
+

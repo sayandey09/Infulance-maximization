@@ -1,0 +1,46 @@
+body{
+    overflow: hidden;
+    background-color: #F1F4F9;
+}
+.myVideo{
+    width: 80%;
+    float: right;
+}
+.typewriter{
+    margin-top: 40px;
+    margin-left: 100px;
+    position: absolute;
+    font-size: xxx-large;
+}
+p{
+    margin-left: 100px;
+    width: 700px;
+    position: absolute;
+    top: 170px;
+    font-size: larger;
+}
+.container{
+    position: absolute;
+    top: 280px;
+    left:-410px;
+}
+.vid{
+    position: absolute;
+    margin-left: 100px;
+    top: 400px;
+}
+.typewriter::after{
+    content: "";
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    border-radius: 20%;
+    width: 2px;
+    left: 100%;
+    animation: blink .5s .5s infinite alternate;
+}
+
+@keyframes blink{
+    0%{opacity: 0%;}
+    100%{opacity: 100%;}
+}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}Business Model{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/business_mod.css')}}">
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+<script>
+    $("#file").change(function(){
+        $(".file-placeholder").fadeOut();
+        $(".file-div").fadeIn();
+        $(".file-text").html($('input[type=file]').val().split('\\').pop());
+    });
+    // Stop the form resubmission on page refresh
+
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    $('.graph').on("load",function() {
+        $(".graph").css("height", "80%");
+    });
+</script>
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <div class="container">
+        <div class="left bg-dark">
+            <div class="left-content">
+                <h2>Business Model</h2>
+                <h3>Inputs</h3>
+                <p>k = Number of seed nodes</p>
+                <p>MC = Number of times you want the algorithm to iterate.</p>
+                <form action="" method="post"  enctype="multipart/form-data">
+                    <div class="file">
+                        <input type="file" id="file" accept=".edges" name="data" required>
+                        <span class="file-placeholder"> Drag Here </span>
+                        <div class="file-div">
+                            <img class="icon" src="{{url_for('static',filename = '/images/icon_graph.png')}}" alt="">
+                            <div class="file-text"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="seed">No. of Seed Nodes</label>
+                        <input id="seed" type="number" placeholder="Value of K" name="seed" required autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="mc">MC Constant value</label>
+                        <input id="mc" type="number" placeholder="Value of MC" name="mc" required autocomplete="off">
+                    </div>
+                    <div>
+                        <input class="btn btn-outline-light btn-lg ps-5 pe-5 fw-bold edit-btn" type="submit" value = "Compute.">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <img class="graph" src="{{url_for('static',filename='cache/graph.png')}}" alt="">
+            <h3 class = "seed-list">{{ text }}{{ data }}<br>{{ text2 }}{{ data2 }} </h3>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}TEAM{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/team.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+    <!-- Vanilla Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js" integrity="sha512-K9tDZvc8nQXR1DMuT97sct9f40dilGp97vx7EXjswJA+/mKqJZ8vcZLifZDP+9t08osMLuiIjd4jZ0SM011Q+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Making Nav Link Active -->
+    <script>
+        document.getElementById('team').classList.add('active');
+    </script>
+{% endblock %}
+<!-- Custom Content -->
+{% block content %}
+    <div class="container">
+      <video autoplay muted loop class="myVideo">
+        <source src="{{url_for('static',filename='/video/bg_effect_3.mp4')}}" type="video/mp4">
+      </video>
+      <div class="top">
+        <div class="slider">
+          <span style="--i:1;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:2;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:3;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:4;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:5;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:6;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:7;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+          <span style="--i:8;"><img src="{{url_for('static', filename='/images/carousel_img_3.jpeg')}}" alt=""></span>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="wrapper" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+          <div class="card">
+            <div class="imgBx">
+              <img src="{{url_for('static',filename='/images/nil.jpeg')}}" alt="">
+            </div>
+            <div class="contentBx">
+              <h3>Nilotpal Ghosh</h3>
+            </div>
+            <ul class="link">
+              <li><a href="mailto:g.nilotpal31@outlook.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+          <div class="card">
+            <div class="imgBx">
+              <img src="{{url_for('static',filename='/images/reema.jpeg')}}" alt="">
+            </div>
+            <div class="contentBx">
+              <h3>Reema Dey</h3>
+            </div>
+            <ul class="link">
+              <li><a href="mailto:reema21sep@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="https://instagram.com/reema21sep?igshid=YmMyMTA2M2Y=" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/reema-dey-595a651a5" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+          <div class="card">
+            <div class="imgBx">
+              <img src="{{url_for('static',filename='/images/sayan.jpg')}}" alt="">
+            </div>
+            <div class="contentBx">
+              <h3>Sayan Dey</h3>
+            </div>
+            <ul class="link">
+              <li><a href="mailto:sayandey.ma@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="wrapper" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+          <div class="card">
+            <div class="imgBx">
+              <img src="{{url_for('static',filename='/images/subhronil01.jpg')}}" alt="">
+            </div>
+            <div class="contentBx">
+              <h3>Subhronil Dey</h3>
+            </div>
+            <ul class="link">
+              <li><a href="mailto:deysubhranil99@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

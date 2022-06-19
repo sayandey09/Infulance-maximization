@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+<!-- Custom Title -->
+{% block title %}HOME{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+{% endblock %}
+
+<!-- Custom Content -->
+{% block content %}
+    <!-- PPT Div -->
+    <div class="d-flex justify-content-center">
+        <iframe src="https://onedrive.live.com/embed?cid=CF532F558B470ACA&amp;resid=CF532F558B470ACA%218593&amp;authkey=AG6Z5I-ah5-rmmQ&amp;em=2&amp;wdAr=1.7777777777777777&amp;wdEaaCheck=1" width="997px" height="585px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+    </div>
+    <!-- Button Div 'Let's Get Started' -->
+    <div class="container d-flex justify-content-center">
+        <a class="btn btn-outline-light btn-lg ps-5 pe-5 mt-4 fw-bold" href="{{url_for('project')}}">Let's Get Started <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill mb-1" viewBox="0 0 16 16">
+            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg></a>
+    </div>
+{% endblock %}
+
+<!-- Custom Scripts -->
+{% block script %}
+    <!-- Making Nav Link Active -->
+    <script>
+        document.getElementById('home').classList.add('active');
+    </script>
+{% endblock %}

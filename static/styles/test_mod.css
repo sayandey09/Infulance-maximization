@@ -1,0 +1,115 @@
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    flex-grow: 1;
+    background-color: lightgray;
+    margin: 0;
+    max-width: none;
+    padding: 0;
+    color: white;
+    font-family:'fantasy','papyrus';
+    font-size: large;
+    display: flex;
+    position: sticky;
+    top: 0;
+    overflow: auto;
+}
+.left{
+    width: 50%;
+    /* background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity)); */
+    height: 100%;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+.left-content > form > div{
+    padding: 1rem;
+}
+.left-content > form{
+    margin-top: 1rem;
+}
+.left-content > h2{
+    padding: 5px;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 2rem;
+    border: 2px solid;
+    border-radius: 5px;
+}
+.left-content{
+    padding: 9rem;
+    padding-top: 50px;
+    padding-bottom: 0;
+}
+.left-content > h3{
+    text-decoration: underline;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+span{
+    text-decoration: underline;
+    font-weight: bolder;
+}
+.right{
+    width: 50%;
+    max-height: 100%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+.right-top, .right-bottom{
+    width: 100%;
+    height: 50%;
+}
+img{
+    width: 100%;
+}
+.load{
+    position: absolute;
+    top: 50%;
+    left: 73%;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-align: center;
+    animation: load-ani 2s infinite alternate;
+    /* z-index: -1; */
+    display: none;
+}
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: rgb(50, 49, 49) transparent rgb(50, 49, 49) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes load-ani {
+      0% { opacity: 50%; }
+      100% { opacity: 100%; }
+  }
